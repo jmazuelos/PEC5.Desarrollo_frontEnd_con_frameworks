@@ -1,0 +1,15 @@
+<div class="article-item" [class.onSale]="article.isOnSale">
+  <img [src]="article.imageURL" alt="{{ article.name }}">
+  <h3>{{ article.name }}</h3>
+  <p [ngClass]="articleClasses">Precio: {{ article.price }} €</p>
+  <p *ngIf="!article.isOnSale">No Disponible</p>
+  <div *ngIf="article.isOnSale">
+    <p>Disponible</p>
+    <p>En stock: {{ article.quantityInCart }}</p>
+    <div>
+      <button (click)="decrementQuantity()" [disabled]="article.quantitySelected === 0">-</button>
+      {{ article.quantitySelected }}
+      <button (click)="incrementQuantity()" [disabled]="article.quantitySelected === article.quantityInCart">+</button>
+    </div>
+  </div>
+</div>

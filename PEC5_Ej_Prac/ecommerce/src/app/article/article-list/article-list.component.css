@@ -1,0 +1,23 @@
+.article-list{
+  display: flex;
+}
+
+.article {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  max-width: 200px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.onSale{
+  background-color: rgb(208, 241, 208);
+}
+
+.notOnSale{
+  color: gray;
+}

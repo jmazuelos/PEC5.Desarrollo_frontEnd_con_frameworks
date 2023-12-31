@@ -1,0 +1,56 @@
+<h2>Crear silla ergonómica</h2>
+
+<div class="formGroup">
+  <form [formGroup]="article" (ngSubmit)="onSubmit()">
+    <div class="formControl mb-3">
+      <label for="articleName">Nombre del Artículo:</label>
+      <input type="text" id="articleName" placeholder="Nombre del artículo" formControlName="articleName" required>
+      
+      <div class="error" *ngIf="articleName.invalid && (articleName.dirty || articleName.touched || submitted)">
+        <div *ngIf="articleName.errors.required">
+          El nombre es necesario
+        </div>
+        <div *ngIf="articleName.errors.forbiddenName">
+          El nombre no puede ser 'Prueba', 'Test', 'Mock' o 'Fake'.
+        </div>
+      </div>
+    </div>
+    
+    <div class="formControl mb-3">
+      <label for="articlePrice">Precio del Artículo:</label>
+      <input type="number" id="articlePrice" placeholder="Precio del artículo" formControlName="articlePrice" required>
+    
+      <div class="error" *ngIf="articlePrice.invalid && (articlePrice.dirty || articlePrice.touched || submitted)">
+        <div *ngIf="articlePrice.errors.required">
+          El precio es necesario
+        </div>
+        <div *ngIf="articlePrice.errors.min">
+          El precio debe ser superior a 0.1€
+        </div>
+      </div>
+    </div>
+    
+    <div class="formControl mb-3">
+      <label for="imageUrl">URL de la Imagen:</label>
+      <input type="text" id="imageUrl" placeholder="Url de la imagen del artículo" formControlName="imageUrl" pattern="^(https?|HTTPS?):\/\/[a-zA-Z0-9]+\.([a-zA-Z])+\.([a-zA-Z]){2,3}\/[a-zA-Z0-9]+\.(jpg|jpeg|png|gif|bmp)$" required>
+      
+      <div class="error" *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched || submitted)">
+        <div *ngIf="imageUrl.errors.required">
+          La URL de la imagen es necesaria.
+        </div>
+        <div *ngIf="imageUrl.errors.pattern">
+          URL de la imagen inválida.
+        </div>
+      </div>
+    </div>
+    
+    <div class="formControl mb-3">
+      <label>¿Está en venta?</label>
+      <input type="checkbox" formControlName="isOnSale"> 
+    </div>
+    
+    <button type="submit">Crear</button>
+  </form>
+</div>
+
+

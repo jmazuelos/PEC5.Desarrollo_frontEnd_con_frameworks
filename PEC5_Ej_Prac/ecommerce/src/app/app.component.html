@@ -1,0 +1,20 @@
+<main class="main">
+  <div class="content">
+    <app-navbar (optionSelected)="handleOptionSelected($event)"></app-navbar>
+    <div>
+      <h1>Bienvenido a {{ title }}</h1>
+    </div>
+    <div *ngIf="selectedOption === 'Inicio'">
+      <app-article-list></app-article-list>
+    </div>
+    <div *ngIf="selectedOption === 'Artículos'">
+      <app-article-list></app-article-list>
+    </div>
+    <div *ngIf="selectedOption === 'Nuevo artículo template'">
+      <app-article-new-template></app-article-new-template>
+    </div>
+    <div *ngIf="selectedOption === 'Nuevo artículo reactivo'">
+      <app-article-new-reactive></app-article-new-reactive>
+    </div>
+  </div>
+</main>
